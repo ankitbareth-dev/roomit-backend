@@ -1,5 +1,6 @@
 import express, { Application } from "express";
 import morgan from "morgan";
+import { globalErrorHandler } from "./middlewares/globalErrorHandler.js";
 
 const app: Application = express();
 app.use(morgan("dev"));
@@ -9,5 +10,6 @@ app.get("/", (_req, res) => {
     message: "Server is running",
   });
 });
+app.use(globalErrorHandler);
 
 export default app;
